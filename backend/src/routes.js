@@ -7,13 +7,13 @@ import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 
-routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.get('/users', UserController.index);
 routes.put('/users', UserController.update);
 routes.delete('/users/:userId', UserController.delete);
 
