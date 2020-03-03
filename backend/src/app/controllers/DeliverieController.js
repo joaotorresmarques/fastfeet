@@ -3,6 +3,7 @@ import Deliverie from '../models/Deliverie';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
+import Mail from '../../lib/Mail';
 
 class DeliverieController {
   async index(req, res) {
@@ -90,6 +91,12 @@ class DeliverieController {
       product,
       deliveryman_id,
       recipient_id,
+    });
+
+    await Mail.sendMail({
+      to: `${checkDeliverymanExists.name} <${checkDeliverymanExists.email}>`,
+      subject: `Encomenda cadastrada para ${checkDeliverymanExists.name}`,
+      text: 'Você tem uma nova encomenda para retirada',
     });
 
     return res.json(delivery);
