@@ -96,7 +96,18 @@ class DeliverieController {
     await Mail.sendMail({
       to: `${checkDeliverymanExists.name} <${checkDeliverymanExists.email}>`,
       subject: `Encomenda cadastrada para ${checkDeliverymanExists.name}`,
-      text: 'Você tem uma nova encomenda para retirada',
+      template: 'cancellation',
+      context: {
+        deliveryman: checkDeliverymanExists.name,
+        product: delivery.product,
+        recipientName: checkRecipientExists.name,
+        recipientStreet: checkRecipientExists.street,
+        recipientNumber: checkRecipientExists.number,
+        recipientZipCode: checkRecipientExists.cep,
+        recipientCity: checkRecipientExists.city,
+        recipientState: checkRecipientExists.state,
+        recipientComplement: checkRecipientExists.complement,
+      },
     });
 
     return res.json(delivery);
