@@ -3,7 +3,9 @@ import Deliverie from '../models/Deliverie';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
-import Mail from '../../lib/Mail';
+
+import DetailMail from '../jobs/DetailMail';
+import Queue from '../../lib/Queue';
 
 class DeliverieController {
   async index(req, res) {
@@ -93,21 +95,10 @@ class DeliverieController {
       recipient_id,
     });
 
-    await Mail.sendMail({
-      to: `${checkDeliverymanExists.name} <${checkDeliverymanExists.email}>`,
-      subject: `Encomenda cadastrada para ${checkDeliverymanExists.name}`,
-      template: 'cancellation',
-      context: {
-        deliveryman: checkDeliverymanExists.name,
-        product: delivery.product,
-        recipientName: checkRecipientExists.name,
-        recipientStreet: checkRecipientExists.street,
-        recipientNumber: checkRecipientExists.number,
-        recipientZipCode: checkRecipientExists.cep,
-        recipientCity: checkRecipientExists.city,
-        recipientState: checkRecipientExists.state,
-        recipientComplement: checkRecipientExists.complement,
-      },
+    await Queue.add(DetailMail.key, {
+      checkDeliverymanExists,
+      delivery,
+      checkRecipientExists,
     });
 
     return res.json(delivery);
