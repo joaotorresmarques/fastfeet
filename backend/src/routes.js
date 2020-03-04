@@ -22,6 +22,13 @@ routes.post('/sessions', SessionController.store);
 routes.get('/deliveryman/deliveries', DeliverieStatusController.index);
 routes.get('/deliveryman/:id/deliveries', DeliverieStatusController.show);
 
+routes.put(
+  '/deliveryman/:deliverymanId/deliveries/:deliveryId',
+  DeliverieStatusController.update
+);
+
+routes.post('/files/signature', upload.single('file'), FileController.store);
+
 routes.use(authMiddleware);
 
 routes.get('/users', UserController.index);
