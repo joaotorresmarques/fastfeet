@@ -10,6 +10,7 @@ import Queue from '../../lib/Queue';
 class DeliverieController {
   async index(req, res) {
     const deliveries = await Deliverie.findAll({
+      order: [['id', 'DESC']],
       include: [
         {
           model: Deliveryman,

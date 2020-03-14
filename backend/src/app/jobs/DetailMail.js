@@ -1,6 +1,6 @@
 import Mail from '../../lib/Mail';
 
-class CancellationMail {
+class DetailMail {
   get key() {
     return 'DetailMail';
   }
@@ -8,12 +8,12 @@ class CancellationMail {
   async handle({ data }) {
     const { checkDeliverymanExists, delivery, checkRecipientExists } = data;
 
-    console.log('A fila executou');
+    console.log('A fila executou DetailMail');
 
     await Mail.sendMail({
       to: `${checkDeliverymanExists.name} <${checkDeliverymanExists.email}>`,
       subject: `Encomenda cadastrada para ${checkDeliverymanExists.name}`,
-      template: 'cancellation',
+      template: 'detail',
       context: {
         deliveryman: checkDeliverymanExists.name,
         product: delivery.product,
@@ -29,4 +29,4 @@ class CancellationMail {
   }
 }
 
-export default new CancellationMail();
+export default new DetailMail();

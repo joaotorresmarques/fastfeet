@@ -1,8 +1,11 @@
 import * as Yup from 'yup';
-import { Op } from 'sequelize';
+import { format, parseISO } from 'date-fns';
 import DeliveryProblem from '../models/DeliveryProblem';
 import Deliverie from '../models/Deliverie';
 import Deliveryman from '../models/Deliveryman';
+
+import CancellationMail from '../jobs/CancellationMail';
+import Queue from '../../lib/Queue';
 
 class DeliveryProblemController {
   async index(req, res) {
@@ -19,15 +22,39 @@ class DeliveryProblemController {
     const deliveryProblems = await DeliveryProblem.findAll({
       where: {
         delivery_id: deliveryIdProblem,
-        description: {
-          [Op.not]: null,
-        },
       },
       include: [
         {
           model: Deliverie,
           as: 'deliveryProblem',
-          attributes: ['id', 'product', 'deliveryman_id', 'recipient_id'],
+          attributes: [
+            'id',
+            'product',
+            'deliveryman_id',
+            'recipient_id',
+            'canceled_at',
+          ],
+        },
+      ],
+    });
+
+    return res.json(deliveryProblems);
+  }
+
+  async show(req, res) {
+    const deliveryProblems = await DeliveryProblem.findAll({
+      order: [['id', 'DESC']],
+      include: [
+        {
+          model: Deliverie,
+          as: 'deliveryProblem',
+          attributes: [
+            'id',
+            'product',
+            'deliveryman_id',
+            'recipient_id',
+            'canceled_at',
+          ],
         },
       ],
     });
@@ -93,6 +120,15 @@ class DeliveryProblemController {
     }
     delivery.update({
       canceled_at: new Date(),
+    });
+
+    const startDate = format(delivery.start_date);
+    const endDate = format(delivery.end_date);
+
+    await Queue.add(CancellationMail.key, {
+      delivery,
+      deliveryman: delivery.deliveryman,
+      problem: deliveryProblem,
     });
 
     return res.json(delivery);

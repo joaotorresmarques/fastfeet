@@ -1,19 +1,19 @@
 <strong>Olá, {{ deliveryman }}</strong>
-<p>Há uma nova encomenda disponível para entrega:</p>
+<p>Cancelamos uma encomenda após você registrar um problema na entrega:</p>
 
-<strong>Produto: </strong>{{ product }}.<br /><br />
-
-<strong>Detalhes do Destinatário: </strong><br />
+<strong>Descrição do problema: </strong><br />
 <p>
-  <strong>Nome: </strong>{{ recipientName }}.<br />
-  <strong>Endereço: </strong>{{ recipientStreet }}.<br />
-  <strong>Número: </strong>{{ recipientNumber }}.<br />
-  <strong>CEP: </strong>{{ recipientZipCode }}.<br />
-  <strong>Cidade: </strong>{{ recipientCity }}.<br />
-  <strong>Estado: </strong>{{ recipientState }}.<br />
-  <strong>Complemento: </strong>{{ recipientComplement }}.
+  {{ description }}
+</p>
+
+<strong>Detalhes da entrega:</strong><br /><br />
+
+<p>
+  <strong>Produto: </strong>{{ product }}.<br />
+  {{!-- <strong>Data de retirada: </strong>{{ startDate }}.<br />
+  <strong>Tentativa de entrega em: </strong>{{ endDate }}<br /> --}}
   <br /><br />
   <small>
-    O produto já está disponível para retirada em nossas instalações, das 08:00 às 18:00h.
+    Tentaremos uma nova entrega assim que os problemas forem resolvidos.
   </small>
 </p>
