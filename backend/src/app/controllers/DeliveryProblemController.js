@@ -1,5 +1,8 @@
 import * as Yup from 'yup';
-import { format, parseISO } from 'date-fns';
+
+// import pt from 'date-fns/locale/pt';
+// import { format, parseISO } from 'date-fns';
+
 import DeliveryProblem from '../models/DeliveryProblem';
 import Deliverie from '../models/Deliverie';
 import Deliveryman from '../models/Deliveryman';
@@ -122,13 +125,15 @@ class DeliveryProblemController {
       canceled_at: new Date(),
     });
 
-    const startDate = format(delivery.start_date);
-    const endDate = format(delivery.end_date);
+    const startDate = delivery.start_date;
+    const endDate = delivery.end_date;
 
     await Queue.add(CancellationMail.key, {
       delivery,
       deliveryman: delivery.deliveryman,
       problem: deliveryProblem,
+      startDate,
+      endDate,
     });
 
     return res.json(delivery);
