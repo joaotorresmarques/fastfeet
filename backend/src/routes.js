@@ -36,6 +36,7 @@ routes.get('/users', UserController.index);
 routes.put('/users', UserController.update);
 routes.delete('/users/:userId', UserController.delete);
 
+routes.get('/recipients', RecipientController.index);
 routes.post('/recipients', RecipientController.store);
 routes.put('/recipients/:recipientId', RecipientController.update);
 

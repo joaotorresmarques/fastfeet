@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
-// import pt from 'date-fns/locale/pt';
-// import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+import { format } from 'date-fns';
 
 import DeliveryProblem from '../models/DeliveryProblem';
 import Deliverie from '../models/Deliverie';
@@ -125,8 +125,8 @@ class DeliveryProblemController {
       canceled_at: new Date(),
     });
 
-    const startDate = delivery.start_date;
-    const endDate = delivery.end_date;
+    const startDate = format(delivery.start_date, 'MM/dd/yyyy', { locale: pt });
+    const endDate = format(delivery.end_date, 'MM/dd/yyyy', { locale: pt });
 
     await Queue.add(CancellationMail.key, {
       delivery,

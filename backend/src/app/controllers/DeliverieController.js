@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { Op } from 'sequelize';
 import Deliverie from '../models/Deliverie';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
@@ -9,7 +10,16 @@ import Queue from '../../lib/Queue';
 
 class DeliverieController {
   async index(req, res) {
-    const deliveries = await Deliverie.findAll({
+    const { page, q } = req.query;
+    const currentPage = page || '1';
+    const name = q || '';
+
+    const deliveries = await Deliverie.findAndCountAll({
+      where: {
+        product: {
+          [Op.like]: `%${name}%`,
+        },
+      },
       order: [['id', 'DESC']],
       include: [
         {
@@ -51,6 +61,8 @@ class DeliverieController {
         'start_date',
         'end_date',
       ],
+      limit: 4,
+      offset: (currentPage - 1) * 4,
     });
     return res.json(deliveries);
   }
