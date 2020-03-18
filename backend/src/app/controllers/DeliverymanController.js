@@ -9,7 +9,7 @@ class DeliverymanController {
     const currentPage = page || '1';
     const name = q || '';
 
-    const deliveryman = await Deliveryman.findAll({
+    const deliveryman = await Deliveryman.findAndCountAll({
       where: {
         name: {
           [Op.like]: `%${name}%`,

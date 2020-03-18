@@ -8,7 +8,7 @@ class RecipientController {
     const currentPage = page || '1';
     const name = q || '';
 
-    const recipient = await Recipient.findAll({
+    const recipient = await Recipient.findAndCountAll({
       where: {
         name: {
           [Op.like]: `%${name}%`,
