@@ -1,12 +1,19 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
 
+import GlobalStyle from './styles/global';
+
+import './config/ReactotronConfig';
+
+import Routes from './routes';
+import history from './services/history';
 
 function App() {
   return (
-    <>
-    <h1>Hello World FastFeet</h1>
-    <p>Lorem ipsum dolor sit amet.</p>
-   </>
+    <Router history={history}>
+      <GlobalStyle />
+      <Routes />
+    </Router>
   );
 }
 
