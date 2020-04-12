@@ -1,60 +1,85 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
-  width: 100%;
   background: #fff;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
+  padding: 0 30px;
+  min-width: 375px;
+`;
 
+export const Content = styled.div`
+  height: 64px;
+  max-width: 1540px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   nav {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-
+    width: 70%;
     img {
-      width: 160px;
-      margin-left: 30px;
+      width: 128px;
+      height: 22.59px;
+      margin-right: 30px;
+      padding-right: 30px;
       border-right: 1px solid #ddd;
-      padding-right: 60px;
     }
-
-    ul {
-      display: flex;
-      margin-left: 61px;
-      width: 100%;
-      height: 100%;
-
-      li {
-        display: flex;
-        justify-content: space-between;
-        color: #444444;
-        margin-right: 20px;
-        font-size: 18px;
+    a {
+      font-weight: bold;
+      color: #999;
+      font-size: 15px;
+      margin-right: 20px;
+      &:hover {
+        color: ${darken(0.3, '#999')};
       }
-
-      li:last-child {
-        margin-right: 0;
+    }
+  }
+  aside {
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    nav {
+      img {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        margin-left: 56px;
+        padding-left: 30px;
+        border-left: 1px solid #ddd;
+      }
+    }
+  }
+  @media (max-width: 869px) {
+    nav {
+      a {
+        font-size: 12px;
+        margin-right: 14px;
       }
     }
   }
 `;
 
-export const StatusSystem = styled.div`
+export const Profile = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 40px;
-
-  span {
-    margin-bottom: 10px;
+  align-items: flex-end;
+  div {
+    flex-direction: row;
+    strong {
+      color: #666;
+      margin-bottom: 4px;
+    }
   }
-
   button {
-    border: none;
+    color: #de3b3b;
+    font-size: 14px;
     background: none;
-    cursor: pointer;
-    color: red;
+    border: none;
+    margin-top: 5px;
+    &:hover {
+      color: ${darken(0.1, '#de3b3b')};
+    }
   }
 `;

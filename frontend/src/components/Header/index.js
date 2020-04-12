@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
+import LinkWrapper from '../../helpers/LinkWrapper';
+import Menu from './Menu';
 
 import logo from '../../assets/fastfeet-logo.png';
 
-import { Container, StatusSystem } from './styles';
+import { Container, Content, Profile } from './styles';
 
 export default function Header() {
+  const [width, setWidth] = useState([0]);
+
+  useLayoutEffect(() => {
+    function updateWidth() {
+      setWidth([window.innerWidth]);
+    }
+    window.addEventListener('resize', updateWidth);
+    updateWidth();
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
   return (
     <Container>
-      <nav>
-        <img src={logo} alt="FastFeet" />
-        <ul>
-          <li>Encomendas</li>
-          <li>Entregadores</li>
-          <li>Destinatários</li>
-          <li>Problemas</li>
-        </ul>
-      </nav>
+      <Content>
+        {width <= 768 ? (
+          <nav>
+            <Menu />
+            <img src={logo} alt="FastFeet" />
+          </nav>
+        ) : (
+          <nav>
+            <img src={logo} alt="FastFeet" />
+            <LinkWrapper to="/orders">Encomendas</LinkWrapper>
+            <LinkWrapper to="/deliveryman">Entregadores</LinkWrapper>
+            <LinkWrapper to="/recipient">Destinatários</LinkWrapper>
+            <LinkWrapper to="/problem">Problemas</LinkWrapper>
+          </nav>
+        )}
 
-      <StatusSystem>
-        <span>Admin FastFeet</span>
-        <button type="button">Sair do Sistema</button>
-      </StatusSystem>
+        <aside>
+          <Profile>
+            <div>
+              <strong>FastFeet User</strong>
+            </div>
+            <button type="button" onClick={() => {}}>
+              Sair do Sistema
+            </button>
+          </Profile>
+        </aside>
+      </Content>
     </Container>
   );
 }
