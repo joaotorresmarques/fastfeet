@@ -9,7 +9,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Node.js](https://nodejs.org/en/) 
 - [React](https://reactjs.org/) 
 - [Docker](https://www.docker.com/) 
-- [Docker Compose](https://docs.docker.com/compose/) 
 - [PostgreSQL](https://www.postgresql.org/) 
 - [MongoDB](https://www.mongodb.com/) 
 - [Express](https://github.com/expressjs/express)
