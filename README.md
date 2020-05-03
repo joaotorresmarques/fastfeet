@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="FastFeet" height="215" title="FastFeet" src=".github/fastfeet.svg" />
+  <img alt="FastFeet" title="FastFeet" src=".github/fastfeetlogo.png" />
 </h1>
 
 ## :rocket: Tecnologias
