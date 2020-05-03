@@ -3,6 +3,10 @@
   <img alt="FastFeet" title="FastFeet" src=".github/fastfeetlogo.png" />
 </h1>
 
+<h1 align="center">
+<img alt="GoStack" src=".github/GoStackLogo.png" width="200px" />
+</h1>
+
 ### 📜 Sobre
 Este é um projeto de um serviço de gestão e acompanhamento de encomendas para uma transportadora fictícia. Construído com as tecnologias mais populares do mundo Javascript, este repositório contem uma API REST (Node.js) como backend, uma aplicação em ReactJS como frontend e um app mobile em React Native.
 
