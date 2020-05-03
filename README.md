@@ -1,3 +1,4 @@
+<br/>
 <h1 align="center">
   <img alt="FastFeet" title="FastFeet" src=".github/fastfeetlogo.png" />
 </h1>
