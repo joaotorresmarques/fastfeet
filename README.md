@@ -28,4 +28,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [MongoDB](https://www.mongodb.com/) 
 - [Express](https://github.com/expressjs/express)
 - [Redis](https://redis.io/) 
-- [Bee-Queue](https://github.com/bee-queue/bee-queue) 
+- [Bee-Queue](https://github.com/bee-queue/bee-queue)
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT.
