@@ -14,10 +14,12 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   nav {
     display: flex;
     align-items: center;
     width: 70%;
+
     img {
       width: 128px;
       height: 22.59px;
@@ -25,6 +27,7 @@ export const Content = styled.div`
       padding-right: 30px;
       border-right: 1px solid #ddd;
     }
+
     a {
       font-weight: bold;
       color: #999;
@@ -35,22 +38,25 @@ export const Content = styled.div`
       }
     }
   }
+
   aside {
     display: flex;
     align-items: center;
   }
+
   @media (max-width: 768px) {
     nav {
       img {
         margin: 0;
         padding: 0;
         border: 0;
-        margin-left: 56px;
+        margin-left: 150px;
         padding-left: 30px;
         border-left: 1px solid #ddd;
       }
     }
   }
+
   @media (max-width: 869px) {
     nav {
       a {
@@ -65,6 +71,7 @@ export const Profile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
   div {
     flex-direction: row;
     strong {
@@ -72,6 +79,7 @@ export const Profile = styled.div`
       margin-bottom: 4px;
     }
   }
+
   button {
     color: #de3b3b;
     font-size: 14px;

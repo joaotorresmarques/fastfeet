@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
+import { FiPower } from 'react-icons/fi';
 import LinkWrapper from '../../helpers/LinkWrapper';
 import Menu from './Menu';
 
@@ -36,16 +37,20 @@ export default function Header() {
           </nav>
         )}
 
-        <aside>
-          <Profile>
-            <div>
-              <strong>FastFeet User</strong>
-            </div>
-            <button type="button" onClick={() => {}}>
-              Sair do Sistema
-            </button>
-          </Profile>
-        </aside>
+        {width <= 768 ? (
+          <FiPower size={20} />
+        ) : (
+          <aside>
+            <Profile>
+              <div>
+                <strong>FastFeet User</strong>
+              </div>
+              <button type="button" onClick={() => {}}>
+                Sair do Sistema
+              </button>
+            </Profile>
+          </aside>
+        )}
       </Content>
     </Container>
   );
