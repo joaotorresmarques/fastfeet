@@ -7,7 +7,7 @@
 <img alt="GoStack" src=".github/GoStackLogo.png" width="200px" />
 </h1>
 
-### 📜 Sobre
+## 📜 Sobre
 Este é um projeto de um serviço de gestão e acompanhamento de encomendas para uma transportadora fictícia. Construído com as tecnologias mais populares do mundo Javascript, este repositório contem uma API REST (Node.js) como backend, uma aplicação em ReactJS como frontend e um app mobile em React Native.
 
 A aplicação em **Node.js** (backend) é uma **API REST** escrita em **Node.JS** que serve dados tanto ao frontend quanto ao mobile. Possuí integração com o **Sentry** para monitoramento de erros em tempo real.
