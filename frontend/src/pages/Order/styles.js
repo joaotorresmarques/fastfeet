@@ -45,6 +45,10 @@ export const Container = styled.div`
       background: #c53030;
       margin: 5px 0 10px;
 
+      &:hover {
+        background: #c53030;
+      }
+
       span {
         padding-left: 10px;
         font-weight: bold;
@@ -53,4 +57,20 @@ export const Container = styled.div`
   }
 `;
 
-export const InputWrapper = styled.div``;
+export const InputWrapper = styled.div`
+  position: relative;
+
+  svg {
+    position: absolute;
+    left: 10px;
+    top: 9px;
+  }
+`;
+
+export const Body = styled.div`
+  height: 649px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
