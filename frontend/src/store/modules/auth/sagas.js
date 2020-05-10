@@ -1,3 +1,3 @@
 import { all } from 'redux-saga';
 
-export default all;
+export default all([]);
