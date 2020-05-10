@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 import { Form } from '@unform/web';
 
@@ -6,13 +8,20 @@ import logo from '../../assets/logo.svg';
 
 import SimpleInput  from '../../components/Form/SimpleInput';
 import SimpleButton  from '../../components/Form/Button/SimpleButton';
+import { signInRequest } from '../../store/modules/auth/actions';
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
+  function handleSubmit({ email, password }) {
+    dispatch(signInRequest(email, password));
+  }
+
   return (
     <> 
       <img src={logo} alt="FastFeet"/>
 
-      <Form onSubmit={() => {}}>
+      <Form onSubmit={handleSubmit}>
         <SimpleInput
           name="email"
           label="SEU E-MAIL"
