@@ -1,9 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// import { Container } from './styles';
+import { Wrapper } from './styles';
 
-function Default() {
-  return <div />;
+// import Header from '~/components/Header';
+
+export default function DefaultLayout({ children }) {
+	return (
+		<Wrapper>
+			{/* <Header /> */}
+			{children}
+		</Wrapper>
+	);
 }
 
-export default Default;
+DefaultLayout.propTypes = {
+	children: PropTypes.element.isRequired,
+};
