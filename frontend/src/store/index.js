@@ -17,4 +17,4 @@ const store = createStore(rootReducer, middlewares);
 
 sagaMiddleware.run(rootSaga);
 
-export default store;
+export { store };

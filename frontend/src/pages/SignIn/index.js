@@ -12,6 +12,7 @@ import { signInRequest } from '../../store/modules/auth/actions';
 
 export default function SignIn() {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
 
   function handleSubmit({ email, password }) {
     dispatch(signInRequest(email, password));
@@ -37,7 +38,7 @@ export default function SignIn() {
         />
 
         <SimpleButton type="submit">
-          Acessar
+          {loading ? 'Carregando...' : 'Acessar'}
         </SimpleButton>
       </Form>
     </>
