@@ -5,6 +5,7 @@ import { Form } from '@unform/web';
 import logo from '../../assets/logo.svg';
 
 import SimpleInput  from '../../components/Form/SimpleInput';
+import SimpleButton  from '../../components/Form/Button/SimpleButton';
 
 export default function SignIn() {
   return (
@@ -25,6 +26,10 @@ export default function SignIn() {
           type="password"
           placeholder="*************"
         />
+
+        <SimpleButton type="submit">
+          Acessar
+        </SimpleButton>
       </Form>
     </>
   );
