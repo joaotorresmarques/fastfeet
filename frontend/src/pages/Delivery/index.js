@@ -2,10 +2,16 @@ import React from 'react';
 
 // import api from '../../services/api';
 
-// import { Container } from './styles';
+import { Container, Content } from './styles';
 
 function Delivery() {
-  return <h1>Delivery</h1>;
+  return (
+    <Container>
+      <Content>
+        headerlist
+      </Content>
+    </Container>
+  );
 }
 
 export default Delivery;
