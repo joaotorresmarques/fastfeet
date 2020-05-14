@@ -6,7 +6,7 @@ import HeaderList from '../../components/HeaderList';
 import SearchInput from '../../components/Form/SearchInput';
 import IconButton from '../../components/Form/Button/IconButton';
 
-import { Container, Content } from './styles';
+import { Container, Content, Grid } from './styles';
 
 function Delivery() {
   return (
@@ -25,6 +25,18 @@ function Delivery() {
             action={() => {}}
           />
         </HeaderList>
+
+        <Grid>
+          <section>
+            <strong>ID</strong>
+						<strong>Destinatário</strong>
+						<strong>Produto</strong>
+						<strong>Cidade</strong>
+						<strong>Estado</strong>
+						<strong>Status</strong>
+						<strong>Ações</strong>
+          </section>
+        </Grid>
       </Content>
     </Container>
   );

@@ -10,4 +10,22 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   max-width: 1200px;
+
+  > section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+`;
+
+export const Grid = styled.div`
+  height: 400px;
+  > section {
+    display: grid;
+
+    padding-left: 25px;
+    padding-right: 13px;
+
+    grid-template-columns: 0.5fr 1.5fr 1fr 1.5fr 1.5fr 1fr 1fr;
+  }
 `;
