@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { MdAdd } from 'react-icons/md';
 
-// import api from '../../services/api';
+import api from '../../services/api';
+
 import HeaderList from '../../components/HeaderList';
 import SearchInput from '../../components/Form/SearchInput';
 import IconButton from '../../components/Form/Button/IconButton';
@@ -10,6 +11,25 @@ import { Container, Content, Grid } from './styles';
 
 function Delivery() {
   const [deliveries, setDeliveries] = useState([]);
+  const [page, setPage] = useState(1);
+
+
+  const loadDeliveries = useCallback(async () => {
+    const response = await api.get('/deliveries', {
+      params: {
+        page,
+      },
+    });
+
+    const data = response.data;
+
+    console.log(response.data);
+    setDeliveries(data);
+  }, [page])
+
+  useEffect(() => {
+    loadDeliveries();
+  }, [loadDeliveries, page]);
 
   return (
     <Container>
