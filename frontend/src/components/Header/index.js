@@ -1,11 +1,17 @@
 import React from 'react';
 
-import { Container } from './styles';
+import logo from '../../assets/logo.svg';
+
+import { Container, Content } from './styles';
 
 function Header() {
   return (
     <Container>
-      <h1>Header</h1>
+      <Content>
+        <nav>
+          <img src={logo} alt="Logo"/>
+        </nav>
+      </Content>
     </Container>
   );
 }

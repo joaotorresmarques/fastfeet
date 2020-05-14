@@ -7,3 +7,12 @@ export const Container = styled.div`
   border-bottom: 1px solid #ddd;
   margin-bottom: 35px;
 `;
+
+export const Content = styled.div`
+  height: 64px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
