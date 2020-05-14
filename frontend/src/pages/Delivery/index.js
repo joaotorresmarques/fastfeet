@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdAdd } from 'react-icons/md';
 
 // import api from '../../services/api';
@@ -9,6 +9,8 @@ import IconButton from '../../components/Form/Button/IconButton';
 import { Container, Content, Grid } from './styles';
 
 function Delivery() {
+  const [deliveries, setDeliveries] = useState([]);
+
   return (
     <Container>
       <Content>
