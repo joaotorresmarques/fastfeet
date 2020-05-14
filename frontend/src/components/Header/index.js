@@ -4,11 +4,17 @@ import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 
+import { signOut } from '../../store/modules/auth/actions';
+
 import { Container, Content, Navigation, Profile } from './styles';
 
 function Header() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
+
+  function handleSignOut() {
+    dispatch(signOut());
+  }
 
   return (
     <Container>
@@ -26,7 +32,7 @@ function Header() {
         <aside>
           <Profile>
             <strong>{profile.name}</strong>
-            <button type="button" onClick={() => {}}>
+            <button type="button" onClick={handleSignOut}>
               sair do sistema
             </button>
           </Profile>
