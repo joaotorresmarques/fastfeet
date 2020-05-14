@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 
-import { Container, Content } from './styles';
+import { Container, Content, Navigation } from './styles';
 
 function Header() {
   return (
@@ -10,6 +11,12 @@ function Header() {
       <Content>
         <nav>
           <img src={logo} alt="Logo"/>
+          <Navigation>
+            <NavLink to="/delivery">ENCOMENDAS</NavLink>
+            <NavLink to="#">ENTREGADORES</NavLink>
+            <NavLink to="#">DESTINATÁRIOS</NavLink>
+            <NavLink to="#">PROBLEMAS</NavLink>
+          </Navigation>
         </nav>
       </Content>
     </Container>
