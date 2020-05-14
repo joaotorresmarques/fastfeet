@@ -1,7 +1,31 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import PropTypes from 'prop-types';
 
-export default  function IconButton() {
-  return <div />;
+import { Button } from './styles';
+
+export default  function IconButton({
+  title,
+  Icon,
+  action,
+  background,
+  ...rest
+}) {
+  return (
+    <Button onClick={action} background={background} {...rest}>
+      <Icon color="#FFF" size={16} />
+      {title}
+    </Button>
+  );
 }
+
+IconButton.propTypes = {
+	title: PropTypes.string.isRequired,
+	Icon: PropTypes.func.isRequired,
+	action: PropTypes.func.isRequired,
+	background: PropTypes.string,
+};
+
+IconButton.defaultProps = {
+	background: '',
+};
