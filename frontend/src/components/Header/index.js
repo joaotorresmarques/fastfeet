@@ -1,11 +1,15 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 
-import { Container, Content, Navigation } from './styles';
+import { Container, Content, Navigation, Profile } from './styles';
 
 function Header() {
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.user.profile);
+
   return (
     <Container>
       <Content>
@@ -18,6 +22,15 @@ function Header() {
             <NavLink to="#">PROBLEMAS</NavLink>
           </Navigation>
         </nav>
+
+        <aside>
+          <Profile>
+            <strong>{profile.name}</strong>
+            <button type="button" onClick={() => {}}>
+              sair do sistema
+            </button>
+          </Profile>
+        </aside>
       </Content>
     </Container>
   );

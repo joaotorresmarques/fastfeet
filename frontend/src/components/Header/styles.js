@@ -29,7 +29,10 @@ export const Content = styled.div`
     }
   }
 
-
+  aside {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const Navigation = styled.div`
@@ -45,6 +48,7 @@ export const Navigation = styled.div`
     font-size: 15px;
     font-weight: bold;
     color: #999;
+    transition: color 0.4s;
 
     &:hover {
       color: ${colors.primary}
@@ -52,6 +56,29 @@ export const Navigation = styled.div`
 
     &:active {
       color: #444;
+    }
+  }
+`;
+
+export const Profile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  strong {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  button {
+    border: 0;
+    background: none;
+    color: ${colors.danger};
+    transition: color 0.2s;
+
+    &:hover {
+      color: ${colors.primary};
     }
   }
 `;
