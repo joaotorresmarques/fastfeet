@@ -10,11 +10,13 @@ function Delivery() {
   return (
     <Container>
       <Content>
-       <HeaderList title="Gerencie suas encomendas" />
-       <SearchInput
-        type="text"
-        placeholder="Buscar por encomendas"
-       />
+        <HeaderList title="Gerencie suas encomendas">
+          <SearchInput
+            onChange={() => {}}
+            type="text"
+            placeholder="Buscar por encomendas"
+          />
+        </HeaderList>
       </Content>
     </Container>
   );
