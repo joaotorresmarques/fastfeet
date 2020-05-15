@@ -147,6 +147,7 @@ class DeliverieStatusController {
         attributes: [
           'id',
           'product',
+          'status',
           'recipient_id',
           'canceled_at',
           'start_date',

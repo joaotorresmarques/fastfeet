@@ -56,6 +56,7 @@ class DeliverieController {
         'id',
         'product',
         'deliveryman_id',
+        'status',
         'recipient_id',
         'canceled_at',
         'start_date',
@@ -106,6 +107,7 @@ class DeliverieController {
       product,
       deliveryman_id,
       recipient_id,
+      status: 'PENDENTE',
     });
 
     await Queue.add(DetailMail.key, {
