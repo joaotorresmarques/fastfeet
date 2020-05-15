@@ -9,6 +9,7 @@
     "@unform/core": "^2.1.0",
     "@unform/web": "^2.1.0",
     "axios": "^0.19.2",
+    "date-fns": "^2.13.0",
     "history": "^4.10.1",
     "immer": "^6.0.5",
     "prop-types": "^15.7.2",

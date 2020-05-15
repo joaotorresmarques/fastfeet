@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { MdAdd } from 'react-icons/md';
 
+import { parseISO, format } from 'date-fns';
+
 import api from '../../services/api';
 
 import HeaderList from '../../components/HeaderList';
@@ -15,6 +17,32 @@ function Delivery() {
   const [deliveries, setDeliveries] = useState([]);
   const [page, setPage] = useState(1);
 
+  const formatDates = useCallback((data) => {
+    return data.map(delivery => ({
+			...delivery,
+			start_dateFormated: delivery.start_date
+				? format(parseISO(delivery.start_date), 'dd/MM/yyyy')
+				: null,
+			end_dateFormated: delivery.end_date
+				? format(parseISO(delivery.end_date), 'dd/MM/yyyy')
+				: null,
+		})); 
+  }, [])
+  
+  const handleSearchDelivery = useCallback(async (e) => {
+    setPage(1);
+    const response = await api.get('/deliveries', {
+      params: {
+        q: e.target.value,
+        page,
+      },
+    });
+
+    const data = formatDates(response.data.rows);
+
+
+    setDeliveries(data);
+  }, [formatDates, page])
 
   const loadDeliveries = useCallback(async () => {
     const response = await api.get('/deliveries', {
@@ -23,11 +51,12 @@ function Delivery() {
       },
     });
 
-    const data = response.data;
+    const data = formatDates(response.data.rows);
 
-    console.log(response.data);
+
+    console.log(response.data.rows);
     setDeliveries(data);
-  }, [page])
+  }, [formatDates, page])
 
   useEffect(() => {
     loadDeliveries();
@@ -38,7 +67,7 @@ function Delivery() {
       <Content>
         <HeaderList title="Gerenciando encomendas">
           <SearchInput
-            onChange={() => {}}
+            onChange={handleSearchDelivery}
             type="text"
             placeholder="Buscar por encomendas"
           />

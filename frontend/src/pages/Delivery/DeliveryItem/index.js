@@ -35,7 +35,7 @@ export default function DeliveryItem({ updateDeliveries, data }) {
 
   return (
     <Container>
-			<small>#{data.id}</small>
+			<small>{data.id}</small>
 			<small>{data.recipient.name}</small>
 			<small>{data.product}</small>
 			<small>{data.recipient.city}</small>

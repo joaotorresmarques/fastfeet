@@ -18,7 +18,7 @@ export default function DeliveryModal({ data }) {
 					<small>
 						{data.recipient.city} - {data.recipient.state}
 					</small>
-					<small>{data.recipient.zip_code}</small>
+					<small>{data.recipient.cep}</small>
 				</div>
 				{data.start_dateFormated ? (
 					<div>

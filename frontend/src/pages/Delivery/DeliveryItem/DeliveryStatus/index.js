@@ -8,7 +8,7 @@ import { Container, Content } from './styles';
 export default function DeliveryStatus({ text, color, background }) {
   return (
     <Container>
-      <Content>
+      <Content color={color} background={background}>
         <MdFiberManualRecord size={15} color={color} />
         <strong>{text}</strong>
       </Content>
