@@ -7,6 +7,8 @@ import HeaderList from '../../components/HeaderList';
 import SearchInput from '../../components/Form/SearchInput';
 import IconButton from '../../components/Form/Button/IconButton';
 
+import DeliveryItem from './DeliveryItem';
+
 import { Container, Content, Grid } from './styles';
 
 function Delivery() {
@@ -58,6 +60,13 @@ function Delivery() {
 						<strong>Status</strong>
 						<strong>Ações</strong>
           </section>
+          {deliveries.map(delivery => (
+            <DeliveryItem
+              updateDeliveries={loadDeliveries}
+              key={delivery.id}
+              data={delivery}
+            />
+          ))}
         </Grid>
       </Content>
     </Container>
