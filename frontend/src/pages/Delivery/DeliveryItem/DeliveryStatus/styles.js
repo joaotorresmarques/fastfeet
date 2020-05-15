@@ -8,6 +8,10 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  position: relative;
+
+  left: 25px;
+
   height: 25px;
 
   background: ${props => props.background};
@@ -16,7 +20,7 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 0 6px;
+  padding: 0 15px 0 11px;
 
   border-radius: 12px;
 

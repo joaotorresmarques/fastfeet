@@ -8,5 +8,5 @@ export const PopUpButton = styled.button`
   width: 20px;
 
   align-self: center;
-  margin-left: 75%;
+  margin-left: 50%;
 `;

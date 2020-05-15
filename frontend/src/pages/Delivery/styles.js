@@ -24,8 +24,16 @@ export const Grid = styled.div`
     display: grid;
 
     padding-left: 25px;
-    padding-right: 13px;
+    padding-right: 5px;
 
-    grid-template-columns: 0.5fr 1.5fr 1fr 1.5fr 1.5fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1.5fr 1fr 1fr 1fr;
+
+    > strong:last-child {
+      text-align: center;
+    }
+
+    strong:nth-child(6) {
+      text-align: center;
+    }  
   }
 `;
