@@ -2,6 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+import More from '../../../components/MorePopUp';
+
 import { Container, MoreConainer } from './styles';
 
 export default function DeliveryItem({ updateDeliveries, data }) {
