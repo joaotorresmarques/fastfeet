@@ -3,8 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import More from '../../../components/MorePopUp';
-
+import DeliveryModal from '../Modal';
 import Status from './DeliveryStatus';
+
+import history from '../../../services/history';
 
 import { colors, statusColors } from '../../../styles/colors';
 
