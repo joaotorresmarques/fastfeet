@@ -6,6 +6,8 @@ import More from '../../../components/MorePopUp';
 
 import Status from './DeliveryStatus';
 
+import { colors, statusColors } from '../../../styles/colors';
+
 import { Container, MoreConainer } from './styles';
 
 export default function DeliveryItem({ updateDeliveries, data }) {
