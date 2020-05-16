@@ -4,6 +4,7 @@ import { MdAdd } from 'react-icons/md';
 import { parseISO, format } from 'date-fns';
 
 import api from '../../services/api';
+import history from '../../services/history';
 
 import HeaderList from '../../components/HeaderList';
 import SearchInput from '../../components/Form/SearchInput';
@@ -75,7 +76,7 @@ function Delivery() {
             Icon={MdAdd}
             title="CADASTRAR"
             type="button"
-            action={() => {}}
+            action={() => history.push('/delivery/form')}
           />
         </HeaderList>
 
