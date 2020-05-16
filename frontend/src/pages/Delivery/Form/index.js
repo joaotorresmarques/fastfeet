@@ -9,8 +9,9 @@ export default function DeliveryForm() {
   return (
     <Container>
       <Content>
-        <HeaderForm title="Cadastro de encomendas"/>
-        <BackButton />
+        <HeaderForm title="Cadastro de encomendas">
+          <BackButton />
+        </HeaderForm>
       </Content>
     </Container>
   );
