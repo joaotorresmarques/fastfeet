@@ -25,7 +25,7 @@ export default function DeliveryForm() {
               type="text"
               label="Destinatário"
               name="recipient_id"
-              placeholder="DEstinatários"
+              placeholder="Destinatários"
             />
           </section>
           <SimpleInput
