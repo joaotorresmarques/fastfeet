@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import Select from 'react-select/async';
 
 import { useField } from '@unform/core';
+import PropTypes from 'prop-types';
 
 import { Container, Label, Error } from './styles';
 
@@ -25,6 +26,16 @@ export default function AsyncSelectInput({ name, label, ...rest }) {
         ref={selectRef}
         {...rest}
       />
+      {error && <Error>{error}</Error>}
     </Container>
   );
 }
+
+AsyncSelectInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+};
+
+AsyncSelectInput.defaultProps = {
+  label: '',
+};
