@@ -6,6 +6,7 @@ import HeaderForm from '../../../components/HeaderForm';
 import BackButton from '../../../components/Button/BackButton';
 import SaveButton from '../../../components/Button/SaveButton';
 import SimpleInput from '../../../components/Form/SimpleInput';
+import AsyncSelectInput from '../../../components/Form/AsyncSelectInput';
 
 export default function DeliveryForm() {
   const formRef = useRef(null);
@@ -20,7 +21,12 @@ export default function DeliveryForm() {
 
         <UnForm>
           <section>
-
+            <AsyncSelectInput
+              type="text"
+              label="Destinatário"
+              name="recipient_id"
+              placeholder="DEstinatários"
+            />
           </section>
           <SimpleInput
             label="Nome do Produto"
