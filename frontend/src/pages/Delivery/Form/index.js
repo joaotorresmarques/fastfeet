@@ -27,6 +27,12 @@ export default function DeliveryForm() {
               name="recipient_id"
               placeholder="Destinatários"
             />
+            <AsyncSelectInput
+              type="text"
+              label="Entregador"
+              name="deliveryman_id"
+              placeholder="Entregadores"
+            />
           </section>
           <SimpleInput
             label="Nome do Produto"
