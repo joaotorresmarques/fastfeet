@@ -3,16 +3,14 @@ import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import Delivery from '../pages/Delivery';
 import SignIn from '../pages/SignIn';
-import DeliveryForm from '../pages/Delivery/Form';
+import Deliveries from '../pages/Deliveries';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/delivery" exact component={Delivery} isPrivate />
-      <Route path="/delivery/form" exact component={DeliveryForm} isPrivate />
+      <Route path="/deliveries" component={Deliveries} isPrivate/>
     </Switch>
   );
 }
