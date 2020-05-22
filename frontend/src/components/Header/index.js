@@ -22,7 +22,7 @@ function Header() {
         <nav>
           <img src={logo} alt="Logo"/>
           <Navigation>
-            <NavLink to="/delivery">ENCOMENDAS</NavLink>
+            <NavLink to="/deliveries">ENCOMENDAS</NavLink>
             <NavLink to="#">ENTREGADORES</NavLink>
             <NavLink to="#">DESTINATÁRIOS</NavLink>
             <NavLink to="#">PROBLEMAS</NavLink>
@@ -33,7 +33,7 @@ function Header() {
           <Profile>
             <strong>{profile.name}</strong>
             <button type="button" onClick={handleSignOut}>
-              sair do sistema
+              Logout
             </button>
           </Profile>
         </aside>

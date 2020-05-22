@@ -1,7 +1,11 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Form, Input } from './styles';
 
-export default function SearchInput() {
-  return <h1>SearchInput</h1>;
+export default function SearchInput({ callback, placeholder = '' }) {
+  return (
+    <Form>
+      <Input type="text" name="search" placeholder={placeholder} />
+    </Form>
+  );
 }
