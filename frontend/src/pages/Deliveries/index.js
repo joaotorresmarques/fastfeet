@@ -8,14 +8,23 @@ import { createLetterAvatar } from '../../utils/letterAvatar';
 import SearchInput from '../../components/SearchInput';
 import Table from '../../components/Table';
 
-import { statusColors } from '../../styles/colors';
+import { deliveryStatus } from '../../styles/colors';
 
-import { Container, PageTitle, DeliverymanField, Avatar, LetterAvatar } from './styles';
+import { 
+  Container,
+  PageTitle,
+  DeliverymanField, 
+  Avatar, 
+  LetterAvatar,
+  DeliveryStatus
+} from './styles';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
   const [searchText, setSearchText] = useState('');
 
+  console.log(deliveries);
+  
   const parseDeliveries = useCallback((data) => {
     return data.map((delivery, index) => {
       delivery.idText = 
@@ -29,22 +38,22 @@ export default function Deliveries() {
         }
         if (delivery.canceled_at)
         delivery.status = {
-          color: statusColors.CANCELADA,
+          color: deliveryStatus.canceled,
           text: 'CANCELADA',
         };
         else if (delivery.end_date)
           delivery.status = {
-            color: statusColors.ENTREGUE,
+            color: deliveryStatus.delivered,
             text: 'ENTREGUE',
           };
         else if (delivery.start_date)
           delivery.status = {
-            color: statusColors.RETIRADA,
+            color: deliveryStatus.takeout,
             text: 'RETIRADA',
           };
         else {
           delivery.status = {
-            color: statusColors.PENDENTE,
+            color: deliveryStatus.pending,
             text: 'PENDENTE',
           };
         }
@@ -102,22 +111,29 @@ export default function Deliveries() {
             {deliveries.map(({ deliveryman, recipient, status, ...delivery }) => (
               <tr key={String(delivery.id)}>
                 <td>{delivery.idText}</td>
-                <td>{recipient.name}</td>
+                <td>{recipient?.name}</td>
                 <DeliverymanField>
-                {deliveryman && (
-                  <>
-                    {deliveryman.avatar ? (
-                      <Avatar src={deliveryman.avatar.url} />
-                    ) : (
-                      <LetterAvatar color={deliveryman?.letterAvatar.color}>
-                        {deliveryman?.letterAvatar.letters}
-                      </LetterAvatar>
-                    )}
+                  {deliveryman && (
+                    <>
+                      {deliveryman.avatar ? (
+                        <Avatar src={deliveryman.avatar.url} />
+                      ) : (
+                        <LetterAvatar color={deliveryman?.letterAvatar.color}>
+                          {deliveryman?.letterAvatar.letters}
+                        </LetterAvatar>
+                      )}
 
-                    {deliveryman.name}
-                  </>
-                )}
+                      {deliveryman.name}
+                    </>
+                  )}
                 </DeliverymanField>
+                <td>{recipient?.city}</td>
+                <td>{recipient?.state}</td>
+                <td>
+                <DeliveryStatus color={status.color}>
+                  {status.text}
+                </DeliveryStatus>
+                </td>
               </tr>
             ))}
           </tbody>

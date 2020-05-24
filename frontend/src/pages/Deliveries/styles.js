@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  padding: 0 90px;
+  /* padding: 0 90px; */
 
   header {
     margin-bottom: 34px;
@@ -48,10 +48,10 @@ export const PageTitle = styled.h1`
 `;
 
 export const DeliverymanField = styled.td`
-  display: flex !important;
+  /* display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  height: auto !important;
+  height: auto !important; */
 `;
 
 export const LetterAvatar = styled.span`
@@ -73,4 +73,24 @@ export const Avatar = styled.img`
   border-radius: 50%;
   margin-right: 5px;
   display: inline-block;
+`;
+
+export const DeliveryStatus = styled.span`
+  background: ${(props) => props.color};
+  color: ${(props) => darken(0.4, props.color)};
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 12px;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: bold;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin-right: 6px;
+    background: ${(props) => darken(0.4, props.color)};
+  }
 `;

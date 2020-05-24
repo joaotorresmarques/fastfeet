@@ -20,6 +20,10 @@ export const Container = styled.table`
     padding: 20px;
     padding-bottom: 0px;
 
+    &:nth-child(3) {
+      text-align: center !important;
+    }
+
     &:first-child {
       text-align: center;
     }
@@ -37,7 +41,12 @@ export const Container = styled.table`
         color: #666666;
         font-size: 16px;
         height: 35px;
-        
+        text-align: center;
+
+        &:nth-child(3) {
+          text-align: center
+        }
+
         &:first-child {
            text-align: center;
          }
