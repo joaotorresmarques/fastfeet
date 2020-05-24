@@ -1,5 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { Form as Unform } from '@unform/web';
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(360deg);
+  }
+`;
 
 export const Form = styled(Unform)`
   background: #FFF;
@@ -11,6 +19,16 @@ export const Form = styled(Unform)`
   flex-direction: row;
   align-items: center;
   width: 100%;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    ${(props) =>
+      props.searching &&
+      css`
+      animation ${rotate} 1s linear infinite;
+    `}
+  }
 
   input {
     font-size: 14px;

@@ -17,9 +17,13 @@ export const Container = styled.table`
     color: #444444;
     font-size: 16px;
     font-weight: bold;
-    text-align: left;
     padding: 20px;
     padding-bottom: 0px;
+
+    &:first-child {
+      text-align: center;
+    }
+
     &:last-child {
       text-align: center;
     }
@@ -33,6 +37,11 @@ export const Container = styled.table`
         color: #666666;
         font-size: 16px;
         height: 35px;
+        
+        &:first-child {
+           text-align: center;
+         }
+
         &:last-child {
           text-align: center;
         }

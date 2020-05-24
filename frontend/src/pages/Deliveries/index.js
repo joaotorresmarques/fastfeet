@@ -10,6 +10,14 @@ import { Container, PageTitle } from './styles';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
+  const [searchText, setSearchText] = useState('');
+
+  async function handleSearch(search) {
+    const response = await api.get(`/deliveries?q=${search}`);
+    const data = response.data.rows;
+    setDeliveries(data);
+    setSearchText(search);
+  }
 
   useEffect(() => {
     async function loadDeliveries() {
@@ -30,7 +38,7 @@ export default function Deliveries() {
         <div>
           <SearchInput
             placeholder="Buscar por encomendas"
-            callback={() => {}}
+            callback={handleSearch}
           />
           <Link to="/deliveries">
             <MdAdd color="#FFFFFF" size={22} />
@@ -53,6 +61,7 @@ export default function Deliveries() {
             {deliveries.map((delivery) => (
               <tr>
                 <td>{delivery.id}</td>
+                <td>{delivery.recipient.name}</td>
               </tr>
             ))}
           </tbody>
