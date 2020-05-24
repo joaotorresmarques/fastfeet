@@ -134,6 +134,7 @@ export default function Deliveries() {
                   {status.text}
                 </DeliveryStatus>
                 </td>
+                <td></td>
               </tr>
             ))}
           </tbody>
