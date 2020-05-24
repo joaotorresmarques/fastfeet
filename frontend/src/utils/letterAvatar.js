@@ -1,4 +1,4 @@
-import { letterAvatar } from '~/styles/colors';
+import { letterAvatar } from '../styles/colors';
 
 export const createLetterAvatar = (name, index) => {
   const split = name.split(' ');

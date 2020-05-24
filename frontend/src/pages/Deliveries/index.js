@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { MdAdd } from 'react-icons/md';
 import api from '../../services/api';
 
+import { createLetterAvatar } from '../../utils/letterAvatar';
+
 import SearchInput from '../../components/SearchInput';
 import Table from '../../components/Table';
+
+import { statusColors } from '../../styles/colors';
 
 import { Container, PageTitle, DeliverymanField } from './styles';
 
@@ -25,22 +29,22 @@ export default function Deliveries() {
         }
         if (delivery.canceled_at)
         delivery.status = {
-          color: deliveryStatus.canceled,
+          color: statusColors.CANCELADA,
           text: 'CANCELADA',
         };
         else if (delivery.end_date)
           delivery.status = {
-            color: deliveryStatus.delivered,
+            color: statusColors.ENTREGUE,
             text: 'ENTREGUE',
           };
         else if (delivery.start_date)
           delivery.status = {
-            color: deliveryStatus.takeout,
+            color: statusColors.RETIRADA,
             text: 'RETIRADA',
           };
         else {
           delivery.status = {
-            color: deliveryStatus.pending,
+            color: statusColors.PENDENTE,
             text: 'PENDENTE',
           };
         }

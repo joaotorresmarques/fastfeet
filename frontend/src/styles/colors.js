@@ -4,6 +4,15 @@ export const colors = {
 	info: '#4D85EE',
 };
 
+export const letterAvatar = [
+  '#F4EFFC',
+  '#FCF4EE',
+  '#EBFBFA',
+  '#FFEEF1',
+  '#F4F9EF',
+  '#FCFCEF',
+];
+
 export const statusColors = {
 	PENDENTE: {
 		color: '#C1BC35',
