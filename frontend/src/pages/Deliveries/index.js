@@ -10,7 +10,7 @@ import Table from '../../components/Table';
 
 import { statusColors } from '../../styles/colors';
 
-import { Container, PageTitle, DeliverymanField } from './styles';
+import { Container, PageTitle, DeliverymanField, Avatar, LetterAvatar } from './styles';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
@@ -55,7 +55,7 @@ export default function Deliveries() {
 
   async function handleSearch(search) {
     const response = await api.get(`/deliveries?q=${search}`);
-    const data = response.data.rows;
+    const data = parseDeliveries(response.data.rows);
     setDeliveries(data);
     setSearchText(search);
   }
@@ -64,12 +64,12 @@ export default function Deliveries() {
     async function loadDeliveries() {
       const response = await api.get('/deliveries');
 
-      const data = response.data.rows;
+      const data = parseDeliveries(response.data.rows);
       setDeliveries(data);
     }
 
     loadDeliveries();
-  }, []);
+  }, [parseDeliveries]);
 
   return (
     <Container>
@@ -99,12 +99,24 @@ export default function Deliveries() {
             </tr>
           </thead>
           <tbody>
-            {deliveries.map((delivery) => (
+            {deliveries.map(({ deliveryman, recipient, status, ...delivery }) => (
               <tr key={String(delivery.id)}>
-                <td>{delivery.id}</td>
-                <td>{delivery.recipient.name}</td>
+                <td>{delivery.idText}</td>
+                <td>{recipient.name}</td>
                 <DeliverymanField>
-                  {delivery.deliveryman.name}
+                {deliveryman && (
+                  <>
+                    {deliveryman.avatar ? (
+                      <Avatar src={deliveryman.avatar.url} />
+                    ) : (
+                      <LetterAvatar color={deliveryman?.letterAvatar.color}>
+                        {deliveryman?.letterAvatar.letters}
+                      </LetterAvatar>
+                    )}
+
+                    {deliveryman.name}
+                  </>
+                )}
                 </DeliverymanField>
               </tr>
             ))}
