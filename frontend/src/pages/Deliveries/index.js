@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd } from 'react-icons/md';
 import api from '../../services/api';
@@ -6,11 +6,48 @@ import api from '../../services/api';
 import SearchInput from '../../components/SearchInput';
 import Table from '../../components/Table';
 
-import { Container, PageTitle } from './styles';
+import { Container, PageTitle, DeliverymanField } from './styles';
 
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
   const [searchText, setSearchText] = useState('');
+
+  const parseDeliveries = useCallback((data) => {
+    return data.map((delivery, index) => {
+      delivery.idText = 
+        delivery.id > 9 ? `#${delivery.id}` : `#0${delivery.id}`;
+
+        if (delivery.deliveryman) {
+          delivery.deliveryman.letterAvatar = createLetterAvatar(
+            delivery.deliveryman.name,
+            index
+          );
+        }
+        if (delivery.canceled_at)
+        delivery.status = {
+          color: deliveryStatus.canceled,
+          text: 'CANCELADA',
+        };
+        else if (delivery.end_date)
+          delivery.status = {
+            color: deliveryStatus.delivered,
+            text: 'ENTREGUE',
+          };
+        else if (delivery.start_date)
+          delivery.status = {
+            color: deliveryStatus.takeout,
+            text: 'RETIRADA',
+          };
+        else {
+          delivery.status = {
+            color: deliveryStatus.pending,
+            text: 'PENDENTE',
+          };
+        }
+
+      return delivery;
+    })
+  }, [])
 
   async function handleSearch(search) {
     const response = await api.get(`/deliveries?q=${search}`);
@@ -59,9 +96,12 @@ export default function Deliveries() {
           </thead>
           <tbody>
             {deliveries.map((delivery) => (
-              <tr>
+              <tr key={String(delivery.id)}>
                 <td>{delivery.id}</td>
                 <td>{delivery.recipient.name}</td>
+                <DeliverymanField>
+                  {delivery.deliveryman.name}
+                </DeliverymanField>
               </tr>
             ))}
           </tbody>

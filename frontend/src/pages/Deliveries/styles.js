@@ -46,3 +46,10 @@ export const PageTitle = styled.h1`
   font-size: 24px;
   font-weight: bold;
 `;
+
+export const DeliverymanField = styled.td`
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  height: auto !important;
+`;
