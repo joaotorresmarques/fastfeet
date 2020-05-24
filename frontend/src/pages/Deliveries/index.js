@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import { MdAdd } from 'react-icons/md';
+import api from '../../services/api';
 
 import SearchInput from '../../components/SearchInput';
 import Table from '../../components/Table';
@@ -9,6 +9,19 @@ import Table from '../../components/Table';
 import { Container, PageTitle } from './styles';
 
 export default function Deliveries() {
+  const [deliveries, setDeliveries] = useState([]);
+
+  useEffect(() => {
+    async function loadDeliveries() {
+      const response = await api.get('/deliveries');
+
+      const data = response.data.rows;
+      setDeliveries(data);
+    }
+
+    loadDeliveries();
+  }, []);
+
   return (
     <Container>
       <header>
@@ -36,6 +49,13 @@ export default function Deliveries() {
               <th>Ações</th>
             </tr>
           </thead>
+          <tbody>
+            {deliveries.map((delivery) => (
+              <tr>
+                <td>{delivery.id}</td>
+              </tr>
+            ))}
+          </tbody>
         </Table>
     </Container>
   );
