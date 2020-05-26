@@ -7,6 +7,7 @@ import { createLetterAvatar } from '../../utils/letterAvatar';
 
 import SearchInput from '../../components/SearchInput';
 import Table from '../../components/Table';
+import Actions from '../../components/Actions';
 
 import { deliveryStatus } from '../../styles/colors';
 
@@ -134,7 +135,11 @@ export default function Deliveries() {
                   {status.text}
                 </DeliveryStatus>
                 </td>
-                <td></td>
+                <td>
+                  <Actions>
+                    
+                  </Actions>
+                </td>
               </tr>
             ))}
           </tbody>
