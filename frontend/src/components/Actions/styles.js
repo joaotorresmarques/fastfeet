@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { darken } from 'polished';
 
@@ -18,6 +18,68 @@ export const Container = styled.div`
   &:hover {
     svg {
       color: ${darken(0.3, '#c6c6c6')}
+    }
+  }
+`;
+
+export const ActionList = styled.div`
+  position: absolute;
+  width: 150px;
+  left: calc(50% - 75px);
+  top: calc(100% + 5px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px 10px;
+  box-shadow: 0px 0px 2px #00000026;
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+  z-index: 2;
+
+  ${(props) =>
+    props.w &&
+    css`
+      width: ${props.w}px;
+      left: calc(50% - ${props.w / 2}px);
+    `}
+
+  &::before {
+    content: '▲';
+    position: absolute;
+    left: calc(50% - 5px);
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    font-size: 10px;
+    text-shadow: 0px -1px 3px #00000057;
+    color: #fff;
+  }
+
+  button {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    align-items: center;
+    padding: 6px 0;
+    text-decoration: none;
+    border: 0;
+    background: none;
+    width: 100%;
+
+    p {
+      display: flex;
+      align-items: baseline;
+      margin-left: 10px;
+    }
+
+    svg {
+      margin-left: 8px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    & + button {
+      border-top: 1px solid #e6e6e6;
     }
   }
 `;

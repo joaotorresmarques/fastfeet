@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdRemoveRedEye, MdEdit, MdDeleteForever } from 'react-icons/md';
 import api from '../../services/api';
 
 import { createLetterAvatar } from '../../utils/letterAvatar';
@@ -137,7 +137,27 @@ export default function Deliveries() {
                 </td>
                 <td>
                   <Actions>
-                    
+                    <button
+                      type="button"
+                      onClick={() => {}}
+                    >
+                      <MdRemoveRedEye size={22} color="#8e5be8"/>
+                      <p>Visualizar</p>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {}}
+                    >
+                      <MdEdit size={22} color="#4D85EE"/>
+                      <p>Editar</p>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {}}
+                    >
+                      <MdDeleteForever size={22} color="#DE3B3B" />
+                      <p>Excluir</p>
+                    </button>
                   </Actions>
                 </td>
               </tr>
