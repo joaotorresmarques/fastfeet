@@ -8,6 +8,7 @@ import { createLetterAvatar } from '../../utils/letterAvatar';
 import SearchInput from '../../components/SearchInput';
 import Table from '../../components/Table';
 import Actions from '../../components/Actions';
+import LookDelivery from './LookDelivery';
 
 import { deliveryStatus } from '../../styles/colors';
 
@@ -23,6 +24,7 @@ import {
 export default function Deliveries() {
   const [deliveries, setDeliveries] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [looking, setLooking] = useState(null);
 
   console.log(deliveries);
   
@@ -61,6 +63,10 @@ export default function Deliveries() {
 
       return delivery;
     })
+  }, [])
+
+  const handleLook = useCallback((delivery) => {
+    setLooking(delivery)
   }, [])
 
   async function handleSearch(search) {
@@ -139,7 +145,7 @@ export default function Deliveries() {
                   <Actions>
                     <button
                       type="button"
-                      onClick={() => {}}
+                      onClick={() => handleLook({ ...delivery, recipient })}
                     >
                       <MdRemoveRedEye size={22} color="#8e5be8"/>
                       <p>Visualizar</p>
@@ -164,6 +170,11 @@ export default function Deliveries() {
             ))}
           </tbody>
         </Table>
+        {looking && (
+          <LookDelivery
+            delivery={looking}
+          />
+        )}
     </Container>
   );
 }
